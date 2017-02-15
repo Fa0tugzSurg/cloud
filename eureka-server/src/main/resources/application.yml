@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: dev
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+server:
+  port: 8100
+eureka:
+  instance:
+    prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
+
