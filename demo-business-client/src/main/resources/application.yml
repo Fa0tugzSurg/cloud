@@ -11,9 +11,6 @@ spring:
 server:
   port: 9091
   ssl:
-    key-store: classpath:keystore/keystore.jks
-    key-store-password: password
-    key-password: password
     clientAuth: want
     protocol: SSL
     enabled: false
@@ -27,3 +24,6 @@ eureka:
 client:
   name:
     demo-service-client: demo-service-client
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 120000

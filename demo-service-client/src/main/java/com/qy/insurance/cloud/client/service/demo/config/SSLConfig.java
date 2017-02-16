@@ -2,9 +2,6 @@ package com.qy.insurance.cloud.client.service.demo.config;
 
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
-import javax.net.ssl.HttpsURLConnection;
-
 /**
  * @task:
  * @discrption:
@@ -14,11 +11,5 @@ import javax.net.ssl.HttpsURLConnection;
  */
 @Configuration
 public class SSLConfig {
-
-    @PostConstruct
-    public void Initial(){
-        HttpsURLConnection.setDefaultHostnameVerifier(
-                (hostname, sslSession) -> hostname.equals("localhost"));
-    }
 
 }

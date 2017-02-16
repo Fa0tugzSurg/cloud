@@ -11,9 +11,6 @@ spring:
 server:
   port: 9090
   ssl:
-    key-store: classpath:keystore/keystore.jks
-    key-store-password: password
-    key-password: password
     clientAuth: want
     protocol: SSL
 eureka:
@@ -22,4 +19,4 @@ eureka:
     leaseRenewalIntervalInSeconds: 10
     non-secure-port-enabled: false
     secure-port-enabled: true
-    secure-port: 9090
+    secure-port: ${server.port}
