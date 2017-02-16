@@ -1,3 +1,10 @@
+server:
+  port: 8100
+  ssl:
+    key-store: classpath:keystore/keystore.jks
+    key-store-password: password
+    key-password: password
+    clientAuth: want
 spring:
   application:
     name: @project.artifactId@
@@ -8,13 +15,12 @@ spring:
       ignored-interfaces:
         - docker0
         - veth.*
-server:
-  port: 8100
 eureka:
+  server:
+    response-cache-auto-expiration-in-seconds: 120
   instance:
     prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 10
-  client:
-    service-url:
-      defaultZone: http://localhost:${server.port}/eureka/
-
+security:
+  basic:
+    enabled: true

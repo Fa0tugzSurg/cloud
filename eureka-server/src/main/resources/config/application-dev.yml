@@ -1,0 +1,8 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@localhost:${server.port}/eureka/
+security:
+  user:
+    name: eureka
+    password: pass_123 #password should not contains @
