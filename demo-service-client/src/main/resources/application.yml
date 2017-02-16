@@ -10,8 +10,16 @@ spring:
         - veth.*
 server:
   port: 9090
+  ssl:
+    key-store: classpath:keystore/keystore.jks
+    key-store-password: password
+    key-password: password
+    clientAuth: want
+    protocol: SSL
 eureka:
   instance:
     prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 10
-
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: 9090

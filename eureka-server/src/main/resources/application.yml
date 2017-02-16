@@ -1,10 +1,10 @@
 server:
   port: 8100
-  ssl:
-    key-store: classpath:keystore/keystore.jks
-    key-store-password: password
-    key-password: password
-    clientAuth: want
+#  ssl:
+#    key-store: classpath:keystore/keystore.jks
+#    key-store-password: password
+#    key-password: password
+#    clientAuth: want
 spring:
   application:
     name: @project.artifactId@
@@ -21,6 +21,12 @@ eureka:
   instance:
     prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 10
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: ${server.port}
+#    statusPageUrl: https://${eureka.hostname}/info
+#    healthCheckUrl: https://${eureka.hostname}/health
+#    homePageUrl: https://${eureka.hostname}/
 security:
   basic:
     enabled: true

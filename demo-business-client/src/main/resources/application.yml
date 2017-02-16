@@ -10,11 +10,20 @@ spring:
         - veth.*
 server:
   port: 9091
+  ssl:
+    key-store: classpath:keystore/keystore.jks
+    key-store-password: password
+    key-password: password
+    clientAuth: want
+    protocol: SSL
+    enabled: false
 eureka:
   instance:
     prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 10
-
+#    non-secure-port-enabled: false
+#    secure-port-enabled: true
+#    secure-port: ${server.port}
 client:
   name:
     demo-service-client: demo-service-client
