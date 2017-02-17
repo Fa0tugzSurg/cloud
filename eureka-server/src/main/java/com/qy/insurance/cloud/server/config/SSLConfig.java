@@ -1,4 +1,4 @@
-package com.qy.insurance.cloud.client.service.demo.config;
+package com.qy.insurance.cloud.server.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;

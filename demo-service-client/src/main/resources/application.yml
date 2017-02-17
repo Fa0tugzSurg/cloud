@@ -12,7 +12,7 @@ server:
   port: 9090
   ssl:
     clientAuth: want
-    protocol: SSL
+    protocol: TLS
 eureka:
   instance:
     prefer-ip-address: true

@@ -1,8 +1,13 @@
+server:
+  ssl:
+    key-store: classpath:keystore/keystore.jks
+    key-store-password: password
+    key-password: password
 eureka:
   client:
     service-url:
-      defaultZone: http://${security.user.name}:${security.user.password}@localhost:${server.port}/eureka/
+      defaultZone: https://${security.user.name}:${security.user.password}@localhost:${server.port}/eureka/
 security:
   user:
     name: eureka
-    password: pass_123 #password should not contains @
+    password: pass_123 #password should not contain chars like '@'

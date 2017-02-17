@@ -1,10 +1,9 @@
 server:
   port: 8100
-#  ssl:
-#    key-store: classpath:keystore/keystore.jks
-#    key-store-password: password
-#    key-password: password
-#    clientAuth: want
+  ssl:
+    clientAuth: want
+    protocol: TLS
+#    enabled: false
 spring:
   application:
     name: @project.artifactId@
@@ -24,9 +23,9 @@ eureka:
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: ${server.port}
-#    statusPageUrl: https://${eureka.hostname}/info
-#    healthCheckUrl: https://${eureka.hostname}/health
-#    homePageUrl: https://${eureka.hostname}/
+    healthCheckUrl: https://${eureka.hostname}:${secure-port}/health
+    statusPageUrl: https://${eureka.hostname}:${secure-port}/info
+    homePageUrl: https://${eureka.hostname}:${secure-port}/
 security:
   basic:
     enabled: true

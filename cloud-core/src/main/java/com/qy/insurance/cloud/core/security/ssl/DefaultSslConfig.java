@@ -19,6 +19,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.SignatureException;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.Certificate;
@@ -27,13 +28,13 @@ import java.security.cert.X509Certificate;
 
 /**
  * @task:
- * @discrption:
+ * @discrption: Override the default system level SslContext and HostnameVerifier
  * @author: Aere
  * @date: 2017/2/16 15:07
  * @version: 1.0.0
  */
 @Configuration
-public class SslConfig {
+public class DefaultSslConfig {
 
     @Value("${server.ssl.key-store}")
     private String ksPath;
@@ -44,6 +45,8 @@ public class SslConfig {
 
     private PublicKey publicKey;
 
+    private boolean finish;
+
     @PostConstruct
     public void initial() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException,
             CertificateException, UnrecoverableKeyException, IOException {
@@ -51,6 +54,7 @@ public class SslConfig {
         trustManagerExtend();
         HttpsURLConnection.setDefaultHostnameVerifier(
                 (hostname, sslSession) -> true);
+        finish = true;
     }
 
     private void trustManagerExtend() throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
@@ -107,14 +111,15 @@ public class SslConfig {
             }
         };
 
-        SSLContext sslContext = SSLContext.getInstance("SSL");
-        sslContext.init(null, new TrustManager[]{customTm}, null);
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(null, new TrustManager[]{customTm}, new SecureRandom());
 
         // You don't have to set this as the default context,
         // it depends on the library you're using.
         SSLContext.setDefault(sslContext);
+//        SSLContexts.
+        HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
     }
-
 
     private PublicKey getPublicKey()
             throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException, UnrecoverableKeyException {
@@ -133,5 +138,9 @@ public class SslConfig {
                 readStream.close();
             }
         }
+    }
+
+    public boolean isFinish() {
+        return finish;
     }
 }
