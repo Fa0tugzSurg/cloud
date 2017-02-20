@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: dev
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
+server:
+  port: 9999
+  ssl:
+    clientAuth: want
+    protocol: TLS
+    enabled: false
+eureka:
+  instance:
+    prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 10
+    non-secure-port-enabled: false
+    secure-port-enabled: true
+    secure-port: ${server.port}
+zuul:
+  add-proxy-headers: true
+  routes:
+    business:
+      stripPrefix: false
+      path: /test/**
+      serviceId: demo-business-client

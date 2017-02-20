@@ -1,0 +1,9 @@
+server:
+  ssl:
+    key-store: classpath:keystore/keystore.jks
+    key-store-password: password
+    key-password: password
+eureka:
+  client:
+    service-url:
+      defaultZone: https://eureka:pass_123@localhost:8100/eureka/
