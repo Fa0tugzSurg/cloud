@@ -71,6 +71,12 @@ public class FeignConfiguration {
             this.setter = setter;
         }
 
+        /**
+         * Fork from SetterFactory.Default class
+         * @param target
+         * @param method
+         * @return
+         */
         @Override
         public HystrixCommand.Setter create(Target<?> target, Method method) {
             String groupKey = target.name();
