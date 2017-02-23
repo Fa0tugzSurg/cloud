@@ -13,6 +13,7 @@
         <module>demo-service-client</module>
         <module>demo-business-client</module>
         <module>zuul-router</module>
+        <module>demo-service-dao</module>
     </modules>
 
     <properties>
