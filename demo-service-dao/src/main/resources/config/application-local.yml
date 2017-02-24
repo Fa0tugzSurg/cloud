@@ -18,7 +18,7 @@ database:
     url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/link_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: qybx_dev
     password: dev@123456
-    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.xa.DruidXADataSource
           #数据库连接池配置
     max-active: 5
     min-idle: 1
@@ -38,7 +38,7 @@ database:
     url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: qybx_dev
     password: dev@123456
-    type: com.alibaba.druid.pool.DruidDataSource
+    type: com.alibaba.druid.pool.xa.DruidXADataSource
           #数据库连接池配置
     max-active: 5
     min-idle: 1
