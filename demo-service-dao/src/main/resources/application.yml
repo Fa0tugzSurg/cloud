@@ -22,7 +22,7 @@ server:
   ssl:
     clientAuth: want
     protocol: TLS
-    enabled: false
+    enabled: true
 eureka:
   instance:
     prefer-ip-address: true

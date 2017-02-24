@@ -1,5 +1,6 @@
 package com.qy.insurance.cloud.client.service.dao.demo.config;
 
+import com.atomikos.jdbc.AtomikosDataSourceBean;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -14,6 +15,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import javax.sql.DataSource;
+import javax.sql.XADataSource;
 
 @Configuration
 public class MybatisConfigLink {
@@ -23,7 +25,7 @@ public class MybatisConfigLink {
     public static final String TYPE = "${" + PREFIX + ".type" + "}";
 
     @Value(TYPE)
-    private String type;
+    private String dsType;
 
     @Primary
     @Bean(name = NAME + "DataSource")
@@ -31,14 +33,22 @@ public class MybatisConfigLink {
     @SuppressWarnings("unchecked")
     public DataSource businessDataSource() throws ClassNotFoundException {
         return DataSourceBuilder.create()
-                .type((Class<? extends DataSource>) Class.forName(type))
+                .type((Class<? extends DataSource>) Class.forName(dsType))
                 .build();
+    }
+
+    @Bean(initMethod = "init" ,destroyMethod = "close")
+    public AtomikosDataSourceBean linkAtomikosDataSourceBean() throws ClassNotFoundException {
+        AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
+        atomikosDataSourceBean.setUniqueResourceName("linkAtomikosDataSourceBean");
+        atomikosDataSourceBean.setXaDataSource((XADataSource) businessDataSource());
+        return atomikosDataSourceBean;
     }
 
     @Bean(name = NAME + "SqlSessionFactory")
     public SqlSessionFactory coreCommonSqlSessionFactoryBean() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-        bean.setDataSource(businessDataSource());
+        bean.setDataSource(linkAtomikosDataSourceBean());
         bean.setTypeAliasesPackage(MybatisMapperScannerConfig.BASE_PACKAGE_LINK);
 
         //添加XML目录
@@ -59,14 +69,4 @@ public class MybatisConfigLink {
         return new SqlSessionTemplate(coreCommonSqlSessionFactoryBean());
     }
 
-//    @Bean(name = NAME + "Transaction")
-//    public DataSourceTransactionManager dataSourceTransactionManager() throws ClassNotFoundException {
-//        return new DataSourceTransactionManager(businessDataSource());
-//    }
-
-//    @Bean
-//    @Autowired
-//    public JtaTransactionManager jtaTransactionManager(UserTransactionManager userTransactionManager,UserTransactionImp userTransactionImp){
-//
-//    }
 }

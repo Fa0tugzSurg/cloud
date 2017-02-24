@@ -27,15 +27,30 @@ public class MybatisMapperScannerConfig {
     public static final String BASE_PACKAGE_COMMON = "com.qy.insurance.cloud.dao.mapper.common";
     public static final String MAPPER_LOCATION_COMMON = "classpath:mapper/common/**/*Mapper*.xml";
 
+    private static final String SQL_SESSION_FACTORY = "SqlSessionFactory";
+
     @Bean
-    public MapperScannerConfigurer businessDataConnectMapperScannerConfig() {
+    public MapperScannerConfigurer linkDatabaseMapperScannerConfig() {
+        MapperScannerConfigurer mapperScannerConfigurer = getMapperScannerConfigurer();
+        mapperScannerConfigurer.setSqlSessionFactoryBeanName(MybatisConfigLink.NAME + SQL_SESSION_FACTORY);
+        mapperScannerConfigurer.setBasePackage(BASE_PACKAGE_LINK);
+        return mapperScannerConfigurer;
+    }
+
+    @Bean
+    public MapperScannerConfigurer commonDatabaseMapperScannerConfig() {
+        MapperScannerConfigurer mapperScannerConfigurer = getMapperScannerConfigurer();
+        mapperScannerConfigurer.setSqlSessionFactoryBeanName(MybatisConfigCommon.NAME + "SqlSessionFactory");
+        mapperScannerConfigurer.setBasePackage(BASE_PACKAGE_COMMON);
+        return mapperScannerConfigurer;
+    }
+
+    private MapperScannerConfigurer getMapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         MapperHelper mapperHelper = new MapperHelper();
         mapperHelper.registerMapper(MySqlMapper.class);
         mapperHelper.registerMapper(Mapper.class);
         mapperScannerConfigurer.setMapperHelper(mapperHelper);
-        mapperScannerConfigurer.setSqlSessionFactoryBeanName("linkSqlSessionFactory");
-        mapperScannerConfigurer.setBasePackage(BASE_PACKAGE_LINK);
         Properties properties = new Properties();
         properties.setProperty("notEmpty", "false");
         properties.setProperty("IDENTITY", "MYSQL");
