@@ -8,6 +8,15 @@ spring:
       ignored-interfaces:
         - docker0
         - veth.*
+  jta:
+    atomikos:
+      datasource:
+        default-isolation-level: READ COMMITTED
+      properties:
+        console-log-level: DEBUG
+        output-dir: ./log
+        log-base-dir: ./log
+        log-base-name: atomikos-transaction
 server:
   port: 5090
   ssl:

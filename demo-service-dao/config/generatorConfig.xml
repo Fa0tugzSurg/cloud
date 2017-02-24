@@ -20,30 +20,26 @@
             <property name="caseSensitive" value="true"/>
         </plugin>
 
-        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
-                        <!--connectionURL="jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db"-->
-                        <!--userId="qybx_dev"-->
-                        <!--password="dev@123456">-->
-        <!--</jdbcConnection>-->
-
-        <!--<javaModelGenerator targetPackage="com.qy.insurance.link.dao.entity.common" targetProject="src/main/java"/>-->
-        <!--<sqlMapGenerator targetPackage="mapper.common.basic" targetProject="src/main/resources"/>-->
-        <!--<javaClientGenerator targetPackage="com.qy.insurance.link.dao.mapper.common.basic" targetProject="src/main/java"-->
-                             <!--type="XMLMAPPER"/>-->
-
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/link_db"
+                        connectionURL="jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db"
                         userId="qybx_dev"
                         password="dev@123456">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="com.qy.insurance.cloud.dao.entity.link" targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper.link.basic" targetProject="src/main/resources"/>
-        <javaClientGenerator targetPackage="com.qy.insurance.cloud.dao.mapper.link.basic" targetProject="src/main/java"
+        <javaModelGenerator targetPackage="com.qy.insurance.cloud.dao.entity.common" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper.common.basic" targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.qy.insurance.cloud.dao.mapper.common.basic" targetProject="src/main/java"
                              type="XMLMAPPER"/>
-        <!--<javaModelGenerator targetPackage="com.qy.insurance.link.dao.entity.common" targetProject="src/main/java"/>-->
-        <!--<sqlMapGenerator targetPackage="mapper.common.basic" targetProject="src/main/resources"/>-->
-        <!--<javaClientGenerator targetPackage="com.qy.insurance.link.dao.mapper.common.basic" targetProject="src/main/java"-->
+
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/link_db"-->
+                        <!--userId="qybx_dev"-->
+                        <!--password="dev@123456">-->
+        <!--</jdbcConnection>-->
+
+        <!--<javaModelGenerator targetPackage="com.qy.insurance.cloud.dao.entity.link" targetProject="src/main/java"/>-->
+        <!--<sqlMapGenerator targetPackage="mapper.link.basic" targetProject="src/main/resources"/>-->
+        <!--<javaClientGenerator targetPackage="com.qy.insurance.cloud.dao.mapper.link.basic" targetProject="src/main/java"-->
                              <!--type="XMLMAPPER"/>-->
 
         <!--<table tableName="t_sys_property_resource" />-->
@@ -77,6 +73,10 @@
         <!--<table tableName="t_service_out_list">-->
             <!--<columnOverride column="out_index" property="id"/>-->
         <!--</table>-->
+        <table tableName="t_hospital_on">
+            <ignoreColumn column="create_time"/>
+            <ignoreColumn column="modify_time"/>
+        </table>
         <!--  ===============tables in insurance_link_dev=============== -->
         <!--<table tableName="t_base_item_class">-->
         <!--</table>-->
@@ -123,9 +123,9 @@
         <!--<table tableName="t_hos_item_class">-->
             <!--<columnOverride column="base_index" property="id"/>-->
         <!--</table>-->
-        <table tableName="t_hoscode_match">
-            <ignoreColumn column="modify_time"/>
-        </table>
+        <!--<table tableName="t_hoscode_match">-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
         <!--<table tableName="t_hospital">-->
             <!--<columnOverride column="hospital_id" property="id"/>-->
             <!--<ignoreColumn column="modify_time"/>-->

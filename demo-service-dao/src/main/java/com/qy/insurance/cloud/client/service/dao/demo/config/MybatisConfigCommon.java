@@ -9,23 +9,28 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 import javax.sql.DataSource;
 
+/**
+ * @task:
+ * @discrption:
+ * @author: Aere
+ * @date: 2017/2/24 9:22
+ * @version: 1.0.0
+ */
 @Configuration
-public class MybatisConfigLink {
+public class MybatisConfigCommon {
 
-    public static final String NAME = "link";
+    public static final String NAME = "common";
     public static final String PREFIX = "database." + NAME;
     public static final String TYPE = "${" + PREFIX + ".type" + "}";
 
     @Value(TYPE)
     private String type;
 
-    @Primary
     @Bean(name = NAME + "DataSource")
     @ConfigurationProperties(prefix = PREFIX)
     @SuppressWarnings("unchecked")
@@ -39,11 +44,11 @@ public class MybatisConfigLink {
     public SqlSessionFactory coreCommonSqlSessionFactoryBean() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(businessDataSource());
-        bean.setTypeAliasesPackage(MybatisMapperScannerConfig.BASE_PACKAGE_LINK);
+        bean.setTypeAliasesPackage(MybatisMapperScannerConfig.BASE_PACKAGE_COMMON);
 
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        bean.setMapperLocations(resolver.getResources(MybatisMapperScannerConfig.MAPPER_LOCATION_LINK));
+        bean.setMapperLocations(resolver.getResources(MybatisMapperScannerConfig.MAPPER_LOCATION_COMMON));
         SqlSessionFactory sqlSessionFactory = bean.getObject();
         specialTypeHandlerRegistry(sqlSessionFactory);
         return sqlSessionFactory;
@@ -58,15 +63,4 @@ public class MybatisConfigLink {
     public SqlSessionTemplate sqlSessionTemplate() throws Exception {
         return new SqlSessionTemplate(coreCommonSqlSessionFactoryBean());
     }
-
-//    @Bean(name = NAME + "Transaction")
-//    public DataSourceTransactionManager dataSourceTransactionManager() throws ClassNotFoundException {
-//        return new DataSourceTransactionManager(businessDataSource());
-//    }
-
-//    @Bean
-//    @Autowired
-//    public JtaTransactionManager jtaTransactionManager(UserTransactionManager userTransactionManager,UserTransactionImp userTransactionImp){
-//
-//    }
 }

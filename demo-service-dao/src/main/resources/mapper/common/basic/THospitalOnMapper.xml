@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qy.insurance.cloud.dao.mapper.common.basic.THospitalOnMapper" >
+  <resultMap id="BaseResultMap" type="com.qy.insurance.cloud.dao.entity.common.THospitalOn" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="client_id" property="clientId" jdbcType="INTEGER" />
+    <result column="hospital_id" property="hospitalId" jdbcType="INTEGER" />
+    <result column="open_flag" property="openFlag" jdbcType="BIT" />
+    <result column="request_open_date" property="requestOpenDate" jdbcType="DATE" />
+    <result column="open_date" property="openDate" jdbcType="DATE" />
+    <result column="modify_user" property="modifyUser" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

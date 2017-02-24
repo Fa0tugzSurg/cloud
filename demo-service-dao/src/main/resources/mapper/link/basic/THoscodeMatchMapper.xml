@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qy.insurance.cloud.dao.mapper.link.basic.THoscodeMatchMapper" >
+  <resultMap id="BaseResultMap" type="com.qy.insurance.cloud.dao.entity.link.THoscodeMatch" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="client_code" property="clientCode" jdbcType="VARCHAR" />
+    <result column="client_hos_id" property="clientHosId" jdbcType="VARCHAR" />
+    <result column="qy_hos_id" property="qyHosId" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>

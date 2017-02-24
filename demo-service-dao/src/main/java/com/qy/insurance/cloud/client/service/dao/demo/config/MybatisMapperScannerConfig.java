@@ -21,8 +21,11 @@ import java.util.Properties;
 @Configuration
 public class MybatisMapperScannerConfig {
 
-    public static final String BASE_PACKAGE_LINK="com.qy.insurance.cloud.dao.mapper.link";
-    public static final String MAPPER_LOCATION="classpath:mapper/link/**/*Mapper*.xml";
+    public static final String BASE_PACKAGE_LINK = "com.qy.insurance.cloud.dao.mapper.link";
+    public static final String MAPPER_LOCATION_LINK = "classpath:mapper/link/**/*Mapper*.xml";
+
+    public static final String BASE_PACKAGE_COMMON = "com.qy.insurance.cloud.dao.mapper.common";
+    public static final String MAPPER_LOCATION_COMMON = "classpath:mapper/common/**/*Mapper*.xml";
 
     @Bean
     public MapperScannerConfigurer businessDataConnectMapperScannerConfig() {
