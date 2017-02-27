@@ -3,7 +3,6 @@ server:
     key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
     key-store-password: password
     key-password: password
-    alias:
 eureka:
   client:
     service-url:
