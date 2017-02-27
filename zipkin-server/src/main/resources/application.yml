@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: @project.artifactId@
+  profiles:
+    active: dev
+server:
+  port: 9411
+  ssl:
+    clientAuth: want
+    protocol: TLS
+    enabled: false
+

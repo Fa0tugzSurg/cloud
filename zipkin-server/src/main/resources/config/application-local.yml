@@ -1,0 +1,14 @@
+server:
+  ssl:
+    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
+    key-store-password: store123
+    key-password: pass123
+eureka:
+  client:
+    service-url:
+      defaultZone: https://eureka:pass_123@192.168.21.106:8100/eureka/
+logging:
+  path: ./log
+  level:
+    com.qy: INFO
+    root: INFO
