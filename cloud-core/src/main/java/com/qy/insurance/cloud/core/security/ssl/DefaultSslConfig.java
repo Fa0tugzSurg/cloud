@@ -1,6 +1,11 @@
 package com.qy.insurance.cloud.core.security.ssl;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
@@ -34,6 +39,7 @@ import java.security.cert.X509Certificate;
  * @version: 1.0.0
  */
 @Configuration
+@Slf4j
 public class DefaultSslConfig {
 
     @Value("${server.ssl.key-store}")
@@ -42,6 +48,11 @@ public class DefaultSslConfig {
     private String ksPassword;
     @Value("${server.ssl.key-password}")
     private String keyPassword;
+    @Value("${server.ssl.alias:selfsigned}")
+    private String alias;
+
+    @Autowired
+    private ConfigurableApplicationContext applicationContext;
 
     private PublicKey publicKey;
 
@@ -121,21 +132,29 @@ public class DefaultSslConfig {
         HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
     }
 
-    private PublicKey getPublicKey()
-            throws KeyStoreException, IOException, CertificateException, NoSuchAlgorithmException, UnrecoverableKeyException {
+    private PublicKey getPublicKey() {
         InputStream readStream = null;
-        if (ksPath.toLowerCase().startsWith("classpath")) { // Resolve Keystore in classpath
-            String path = ksPath.substring(ksPath.indexOf(':') + 1);
-            readStream = new ClassPathResource(path).getInputStream();
-        }
         try {
+            if (ksPath.toLowerCase().startsWith("classpath")) { // Resolve Keystore in classpath
+                String path = ksPath.substring(ksPath.indexOf(':') + 1);
+                readStream = new ClassPathResource(path).getInputStream();
+            }
             KeyStore ks = KeyStore.getInstance("JKS");
             ks.load(readStream, ksPassword.toCharArray());
-            Certificate certificate = ks.getCertificate("selfsigned");// This is the alias name when you created the jks
+            Certificate certificate = ks.getCertificate(alias);// This is the alias name when you created the jks
             return certificate.getPublicKey();
+        } catch (KeyStoreException | IOException | CertificateException |
+                NoSuchAlgorithmException e) {
+            log.error("Load keystore error! Application is going to exit!", e);
+            SpringApplication.exit(applicationContext);
+            return null;
         } finally {
             if (readStream != null) {
-                readStream.close();
+                try {
+                    readStream.close();
+                } catch (IOException e) {
+                    log.error("", e);
+                }
             }
         }
     }

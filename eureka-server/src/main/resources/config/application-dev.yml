@@ -1,6 +1,6 @@
 server:
   ssl:
-    key-store: classpath:keystore/keystore.jks
+    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
     key-store-password: password
     key-password: password
 eureka:

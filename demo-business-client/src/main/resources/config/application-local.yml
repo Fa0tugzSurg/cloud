@@ -1,16 +1,16 @@
 server:
   ssl:
     key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
-    key-store-password: password
-    key-password: password
-    alias:
+    key-store-password: store123
+    key-password: pass123
 eureka:
   client:
     service-url:
-      defaultZone: https://eureka:pass_123@localhost:8100/eureka/
+      defaultZone: https://eureka:pass_123@192.168.21.106:8100/eureka/
 logging:
   path: ./log
   level:
     com.qy: INFO
     com.qy.insurance.cloud.client.business.demo.service.cloud: DEBUG #Log level for feign client
     root: INFO
+
