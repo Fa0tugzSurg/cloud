@@ -3,6 +3,7 @@ server:
     key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
     key-store-password: store123
     key-password: pass123
+    enabled: false
 eureka:
   client:
     service-url:

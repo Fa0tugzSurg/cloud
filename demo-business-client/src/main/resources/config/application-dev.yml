@@ -13,3 +13,10 @@ logging:
     com.qy: INFO
     com.qy.insurance.cloud.client.business.demo.service.cloud: DEBUG #Log level for feign client
     root: INFO
+
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    base-url: http://zipkin-server/

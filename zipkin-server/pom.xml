@@ -11,10 +11,14 @@
 
     <artifactId>zipkin-server</artifactId>
 
+    <properties>
+        <start-class>com.qy.insurance.cloud.server.zipkin.Application</start-class>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
         </dependency>
         <dependency>
             <groupId>io.zipkin.java</groupId>
