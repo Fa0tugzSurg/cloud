@@ -2,8 +2,6 @@ package com.qy.insurance.cloud.client.business.demo.config;
 
 import com.qy.insurance.cloud.core.annotation.EnableRibbonZipkin;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import com.qy.insurance.cloud.core.zipkin.config.ZipkinRibbonConfig;
 
 /**
  * @task:

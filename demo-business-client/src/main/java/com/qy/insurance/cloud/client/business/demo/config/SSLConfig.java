@@ -1,5 +1,6 @@
 package com.qy.insurance.cloud.client.business.demo.config;
 
+import com.qy.insurance.cloud.core.annotation.EnableEurekaSSL;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -11,8 +12,7 @@ import org.springframework.context.annotation.Import;
  * @version: 1.0.0
  */
 @Configuration
-@Import({com.qy.insurance.cloud.core.security.ssl.DefaultSslConfig.class
-        , com.qy.insurance.cloud.core.security.ssl.EurekaSslConfig.class})
+@EnableEurekaSSL
 public class SSLConfig {
 
 }

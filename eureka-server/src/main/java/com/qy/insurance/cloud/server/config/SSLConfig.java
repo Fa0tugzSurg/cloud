@@ -6,6 +6,7 @@ import com.netflix.eureka.EurekaServerConfig;
 import com.netflix.eureka.cluster.PeerEurekaNodes;
 import com.netflix.eureka.registry.PeerAwareInstanceRegistry;
 import com.netflix.eureka.resources.ServerCodecs;
+import com.qy.insurance.cloud.core.annotation.EnableEurekaSSL;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -23,10 +24,9 @@ import org.springframework.context.annotation.Primary;
  * @version: 1.0.0
  */
 @Configuration
-@Import({com.qy.insurance.cloud.core.security.ssl.DefaultSslConfig.class
-        , com.qy.insurance.cloud.core.security.ssl.EurekaSslConfig.class})
-@Slf4j
+@EnableEurekaSSL
 @EnableEurekaServer
+@Slf4j
 public class SSLConfig {
 
     @Bean
