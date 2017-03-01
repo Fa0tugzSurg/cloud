@@ -13,3 +13,31 @@ logging:
   level:
     com.qy: INFO
     root: INFO
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    schema: classpath:/mysql.sql
+    url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: qybx_dev
+    password: dev@123456
+    initialize: true   # Switch this on to create the schema on startup:
+    continueOnError: true
+    max-active: 5
+    min-idle: 1
+    initial-size: 1
+    test-on-borrow: true
+    test-on-return: true
+    test-while-idle: true
+    validation-query: select 1
+    #每10分钟收集空闲连接，单位毫秒#
+    time-between-eviction-runs-millis: 600000
+    #连接的最大空闲时间，单位毫秒，60分钟
+    min-evictable-idle-time-millis: 3600000
+    max-wait: 30000
+    jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=0)
+  sleuth:
+    enabled: false
+zipkin:
+  storage:
+    type: mysql

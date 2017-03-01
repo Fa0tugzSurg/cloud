@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import zipkin.server.EnableZipkinServer;
+import zipkin.server.brave.BraveConfiguration;
 
 /**
  * @task:
@@ -12,7 +13,7 @@ import zipkin.server.EnableZipkinServer;
  * @date: 2017/2/27 15:30
  * @version: 1.0.0
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {BraveConfiguration.class})
 @EnableDiscoveryClient
 @EnableZipkinServer
 public class Application {
