@@ -17,4 +17,6 @@ spring:
     sampler:
       percentage: 1.0
   zipkin:
-    base-url: http://zipkin-server/
+    locator:
+      discovery:
+        enabled: true
