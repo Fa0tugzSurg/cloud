@@ -1,4 +1,4 @@
-package com.qy.insurance.cloud.client.business.demo.zipkin;
+package com.qy.insurance.cloud.core.zipkin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.sleuth.metric.SpanMetricReporter;

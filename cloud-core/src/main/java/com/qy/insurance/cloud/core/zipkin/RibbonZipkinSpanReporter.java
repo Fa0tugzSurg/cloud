@@ -1,4 +1,4 @@
-package com.qy.insurance.cloud.client.business.demo.zipkin;
+package com.qy.insurance.cloud.core.zipkin;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.sleuth.metric.SpanMetricReporter;

@@ -1,4 +1,4 @@
-package com.qy.insurance.cloud.client.business.demo.zipkin;
+package com.qy.insurance.cloud.core.zipkin;
 
 import org.apache.http.conn.util.InetAddressUtils;
 import org.springframework.cloud.client.ServiceInstance;
