@@ -1,0 +1,18 @@
+server:
+  ssl:
+    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
+    key-store-password: pass_test
+    key-password: pass_test
+eureka:
+  client:
+    service-url:
+      defaultZone: https://${security.user.name}:${security.user.password}@localhost:${server.port}/eureka/,https://${security.user.name}:${security.user.password}@${eureka.backup.zone:localhost}:${server.port}/eureka/
+security:
+  user:
+    name: eureka
+    password: pass_123 #password should not contain chars like '@'
+logging:
+  path: ./log
+  level:
+    com.qy: INFO
+    root: INFO

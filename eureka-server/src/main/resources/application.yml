@@ -16,16 +16,16 @@ spring:
         - veth.*
 eureka:
   server:
-    response-cache-auto-expiration-in-seconds: 120
+    response-cache-auto-expiration-in-seconds: 60
   instance:
     prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 10
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: ${server.port}
-#    healthCheckUrl: https://${eureka.hostname}:${secure-port}/health
-#    statusPageUrl: https://${eureka.hostname}:${secure-port}/info
-#    homePageUrl: https://${eureka.hostname}:${secure-port}/
+    healthCheckUrl: https://${eureka.hostname}:${secure-port}/health
+    statusPageUrl: https://${eureka.hostname}:${secure-port}/info
+    homePageUrl: https://${eureka.hostname}:${secure-port}/
 security:
   basic:
     enabled: true
