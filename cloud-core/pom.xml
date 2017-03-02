@@ -70,4 +70,17 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>insurance-snapshot</id>
+            <name>insurance-snapshot</name>
+            <url>http://nexus.kyeegroup.com/content/repositories/insurance-snapshot/</url>
+        </snapshotRepository>
+        <repository>
+            <id>insurance-release</id>
+            <name>insurance-release</name>
+            <url>http://nexus.kyeegroup.com/content/repositories/insurance-release/</url>
+        </repository>
+    </distributionManagement>
+
 </project>
