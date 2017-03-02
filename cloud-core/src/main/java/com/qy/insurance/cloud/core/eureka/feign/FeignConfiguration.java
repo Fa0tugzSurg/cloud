@@ -14,6 +14,7 @@ import feign.hystrix.SetterFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 import java.lang.reflect.Method;
@@ -45,6 +46,7 @@ public class FeignConfiguration {
     }
 
     @Bean
+    @Primary
     @ConditionalOnProperty(name = "feign.hystrix.enabled", matchIfMissing = true)
     public Feign.Builder feignHystrixBuilder() {
         HystrixFeign.Builder builder = HystrixFeign.builder();
