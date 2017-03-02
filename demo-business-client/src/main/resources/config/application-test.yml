@@ -1,0 +1,24 @@
+server:
+  ssl:
+    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
+    key-store-password: pass_test
+    key-password: pass_test
+eureka:
+  client:
+    service-url:
+      defaultZone: https://eureka:pass_123@${eureka.backup.zone:localhost}:8100/eureka/
+logging:
+  path: ./log
+  level:
+    com.qy: INFO
+    com.qy.insurance.cloud.client.business.demo.service.cloud: DEBUG #Log level for feign client
+    root: INFO
+
+spring:
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    locator:
+      discovery:
+        enabled: true

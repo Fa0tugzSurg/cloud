@@ -1,9 +1,9 @@
 package com.qy.insurance.cloud.client.business.demo.config;
 
+import com.qy.insurance.cloud.core.annotation.EnableFeignCustom;
 import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 /**
  * @task:
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Import;
  * @version: 1.0.0
  */
 @Configuration
-@Import(com.qy.insurance.cloud.core.eureka.feign.FeignConfiguration.class)
+@EnableFeignCustom
 public class FeignConfiguration {
     @Bean
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {

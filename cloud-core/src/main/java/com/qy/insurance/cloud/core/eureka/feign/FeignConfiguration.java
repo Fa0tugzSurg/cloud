@@ -11,6 +11,7 @@ import feign.Retryer;
 import feign.Target;
 import feign.hystrix.HystrixFeign;
 import feign.hystrix.SetterFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,14 +49,20 @@ public class FeignConfiguration {
     @Bean
     @Primary
     @ConditionalOnProperty(name = "feign.hystrix.enabled", matchIfMissing = true)
-    public Feign.Builder feignHystrixBuilder() {
+    public Feign.Builder feignHystrixBuilder(HystrixCommandProperties.Setter setter) {
         HystrixFeign.Builder builder = HystrixFeign.builder();
-        HystrixCommandProperties.Setter setter = HystrixCommandProperties.Setter()
-                .withCircuitBreakerEnabled(true)
-                .withExecutionTimeoutEnabled(false);
         CustomSetterFactory customSetterFactory = new CustomSetterFactory(setter);
         builder.setterFactory(customSetterFactory);
         return builder;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public HystrixCommandProperties.Setter customSetter(){
+        HystrixCommandProperties.Setter setter = HystrixCommandProperties.Setter()
+                .withCircuitBreakerEnabled(true)
+                .withExecutionTimeoutEnabled(false);
+        return setter;
     }
 
     static class CustomSetterFactory implements SetterFactory{
