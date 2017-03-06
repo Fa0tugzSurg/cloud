@@ -86,8 +86,12 @@ public class RibbonURLConnectionSender implements Sender {
         URLConnectionSender urlConnectionSender;
         if (ribbonEnable) {
             ServiceInstance instance = client.choose(serviceId);
-            String endpoint = instance.getHost() + ":" + instance.getPort();
-            urlConnectionSender = senderMap.computeIfAbsent(endpoint, this::buildSender);
+            if (instance != null) {
+                String endpoint = instance.getHost() + ":" + instance.getPort();
+                urlConnectionSender = senderMap.computeIfAbsent(endpoint, this::buildSender);
+            } else {
+                urlConnectionSender = senderMap.computeIfAbsent(this.endpoint, this::buildSender);
+            }
         } else {
             urlConnectionSender = senderMap.computeIfAbsent(this.endpoint, this::buildSender);
         }
