@@ -1,8 +1,8 @@
 server:
   ssl:
     key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
-    key-store-password: pass_test
-    key-password: pass_test
+    key-store-password: testProd
+    key-password: 8rU@rAPuzaFa
     enabled: false
 eureka:
   client:
@@ -19,8 +19,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     schema: classpath:/mysql.sql
     url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/monitor_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: qybx_dev
-    password: dev@123456
+    username: qybx_test
+    password: test123456
     initialize: true   # Switch this on to create the schema on startup:
     continueOnError: true
     max-active: 5
