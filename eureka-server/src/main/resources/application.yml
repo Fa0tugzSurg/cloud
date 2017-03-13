@@ -23,9 +23,9 @@ eureka:
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: ${server.port}
-    healthCheckUrl: https://${eureka.hostname}:${server.port}/health
-    statusPageUrl: https://${eureka.hostname}:${server.port}/info
-    homePageUrl: https://${eureka.hostname}:${server.port}/
+    healthCheckUrl: https://${eureka.hostname}:8100/health
+    statusPageUrl: https://${eureka.hostname}:8100/info
+    homePageUrl: https://${eureka.hostname}:8100/
 security:
   basic:
     enabled: true
