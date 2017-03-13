@@ -14,7 +14,6 @@
     <properties>
         <start-class>com.qy.insurance.cloud.server.Application</start-class>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
