@@ -64,4 +64,31 @@
         </plugins>
     </build>
 
+    <repositories>
+        <repository>
+            <id>repo-qy</id>
+            <name>local public nexus</name>
+            <url>http://139.224.1.62/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo-qy</id>
+            <name>local public nexus</name>
+            <url>http://139.224.1.62/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
 </project>
