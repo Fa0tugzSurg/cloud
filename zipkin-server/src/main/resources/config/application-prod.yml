@@ -19,8 +19,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     schema: classpath:/mysql.sql
     url: jdbc:mysql://rm-m5e6886i1i43e4091.mysql.rds.aliyuncs.com:3306/monitor_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: linknew_prod
-    password: x1POjIXTpt634p2sqYLC
+    username: monitor_prod
+    password: vvVN7hY8KvndEvAI8oIs
 #    initialize: true   # Switch this on to create the schema on startup:
     continueOnError: true
     max-active: 5
