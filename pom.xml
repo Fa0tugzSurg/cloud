@@ -15,6 +15,7 @@
         <module>zuul-router</module>
         <module>demo-service-dao</module>
         <module>zipkin-server</module>
+        <module>oauth2-server</module>
     </modules>
 
     <properties>
