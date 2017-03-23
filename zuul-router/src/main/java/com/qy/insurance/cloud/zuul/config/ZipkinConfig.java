@@ -1,4 +1,4 @@
-package com.qy.insurance.cloud.client.business.demo.config;
+package com.qy.insurance.cloud.zuul.config;
 
 import com.qy.insurance.cloud.core.annotation.EnableRibbonZipkin;
 import org.springframework.context.annotation.Configuration;
