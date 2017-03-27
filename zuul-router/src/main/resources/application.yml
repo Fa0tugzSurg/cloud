@@ -25,12 +25,14 @@ zuul:
   add-proxy-headers: true
   routes:
     business:
-      stripPrefix: true
+      stripPrefix: false
       path: /test/**
-      serviceId: demo-business-client
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: demo-role-authority
     link:
       stripPrefix: true
       path: /link/**
+      sensitiveHeaders: Cookie,Set-Cookie
       serviceId: customer_link
   filter:
     routes:
@@ -40,7 +42,7 @@ zuul:
         type: pre
         paths:
           - /link/**
-          - /tests/**
+          - /test/**
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT
