@@ -16,6 +16,7 @@
         <module>demo-service-dao</module>
         <module>zipkin-server</module>
         <module>oauth2-server</module>
+        <module>demo-role-authority</module>
     </modules>
 
     <properties>
