@@ -12,15 +12,15 @@ import org.springframework.context.annotation.Configuration;
  * @date: 2017/2/20 19:21
  * @version: 1.0.0
  */
-@Configuration
+//@Configuration
 public class FilterConfig {
-    @Bean
-    public TestFilter testFilter(){
-        return new TestFilter();
-    }
-
-    @Bean
-    public JwtFilter jwtFilter(){
-        return new JwtFilter();
-    }
+//    @Bean
+//    public TestFilter testFilter(){
+//        return new TestFilter();
+//    }
+//
+//    @Bean
+//    public JwtFilter jwtFilter(){
+//        return new JwtFilter();
+//    }
 }
