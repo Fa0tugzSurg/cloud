@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.AntPathMatcher;
-
 import javax.annotation.PostConstruct;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.Enumeration;
@@ -31,7 +29,6 @@ import java.util.concurrent.atomic.AtomicReference;
  * @version: 1.0.0
  */
 @Slf4j
-@WebFilter(urlPatterns = "/*", filterName = "jwtFilter")
 public class JwtFilter extends ZuulFilter {
 
     private static final long timeout = 300_1000L;
