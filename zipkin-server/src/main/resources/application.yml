@@ -10,10 +10,6 @@ spring:
         - veth.*
 server:
   port: 9411
-  ssl:
-    clientAuth: want
-    protocol: TLS
-    enabled: false
 eureka:
   instance:
     prefer-ip-address: true
