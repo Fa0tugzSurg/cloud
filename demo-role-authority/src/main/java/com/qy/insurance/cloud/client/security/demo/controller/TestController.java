@@ -29,13 +29,7 @@ public class TestController {
     @GetMapping("/fail")
     @PreAuthorize("hasAuthority('c')")
     public String fail(){
-        return "FAIL!";
-    }
-
-    @GetMapping("/e")
-    @PreAuthorize("hasAuthority('e')")
-    public String queryE(){
-        return "拥有权限E可查询此接口数据!!!";
+        return "OK!";
     }
 
     @GetMapping("/list")

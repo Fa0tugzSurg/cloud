@@ -3,10 +3,11 @@ server:
     key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
     key-store-password: store123
     key-password: pass123
+    enabled: false
 eureka:
   client:
     service-url:
-      defaultZone: https://eureka:pass_123@localhost:8100/eureka/
+      defaultZone: http://eureka:pass_123@localhost:8100/eureka/
 logging:
   path: ./log
   level:
