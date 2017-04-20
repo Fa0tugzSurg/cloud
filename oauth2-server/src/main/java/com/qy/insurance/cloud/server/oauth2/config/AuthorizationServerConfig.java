@@ -1,13 +1,10 @@
 package com.qy.insurance.cloud.server.oauth2.config;
 
-import com.qy.insurance.cloud.server.oauth2.service.KeyManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -30,8 +27,9 @@ import javax.sql.DataSource;
  * @version: 1.0.0
  */
 @Configuration
-@DependsOn("keyManager")
+//@DependsOn("keyManager")
 @EnableAuthorizationServer
+@ConditionalOnMissingBean(DataSource.class)
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     public static final String AUTH_SIGN_KEY_NAME = "insurance.cloud.auth.key";
@@ -42,12 +40,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    @Qualifier("keyManager")
-    private KeyManagementService keyManagementService;
+//    @Autowired
+//    private JdbcTemplate jdbcTemplate;
+//
+//    @Autowired
+//    @Qualifier("keyManager")
+//    private KeyManagementService keyManagementService;
 
 
     @Override
@@ -77,23 +75,24 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
-        keyInitialCheck();
-        String s = "SELECT property_value FROM t_sys_property_resource WHERE property_name=?";
-        String key = jdbcTemplate.queryForObject(s, String.class, AUTH_SIGN_KEY_NAME);
+//        keyInitialCheck();
+//        String s = "SELECT property_value FROM t_sys_property_resource WHERE property_name=?";
+//        String key = jdbcTemplate.queryForObject(s, String.class, AUTH_SIGN_KEY_NAME);
+        String key = "O_vXUOds4wkkoFevWD3jwj0PamwhawbEjVXups37XMwnEwdg6X5s1HxTpLxr2esku-n94KVbk8BAI4Tr-BiumA";
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey(key);
         return converter;
     }
 
-    private void keyInitialCheck() {
-        String sqlCount = "SELECT count(0) FROM t_sys_property_resource WHERE property_name=?";
-        Integer cnt = jdbcTemplate.queryForObject(sqlCount, Integer.class, AUTH_SIGN_KEY_NAME);
-        if (cnt == 0) {
-            String key = keyManagementService.getTokenSignKey();
-            String sqlInsert = "INSERT INTO t_sys_property_resource (property_name,property_value) VALUES (?,?)";
-            jdbcTemplate.update(sqlInsert, AUTH_SIGN_KEY_NAME, key);
-        }
-    }
+//    private void keyInitialCheck() {
+//        String sqlCount = "SELECT count(0) FROM t_sys_property_resource WHERE property_name=?";
+//        Integer cnt = jdbcTemplate.queryForObject(sqlCount, Integer.class, AUTH_SIGN_KEY_NAME);
+//        if (cnt == 0) {
+//            String key = keyManagementService.getTokenSignKey();
+//            String sqlInsert = "INSERT INTO t_sys_property_resource (property_name,property_value) VALUES (?,?)";
+//            jdbcTemplate.update(sqlInsert, AUTH_SIGN_KEY_NAME, key);
+//        }
+//    }
 
     @Bean
     @Primary

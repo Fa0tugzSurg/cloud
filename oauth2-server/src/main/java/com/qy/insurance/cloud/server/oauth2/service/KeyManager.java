@@ -51,7 +51,7 @@ public class KeyManager implements KeyManagementService {
     }
 
     @Override
-    @Scheduled(cron = "0 30 3 * * ?") //每天凌晨3点半
+    //@Scheduled(cron = "0 30 3 * * ?") //每天凌晨3点半
     @Transactional
     public void refreshTokenSignKey() {
         String signKey = getTokenSignKey();
