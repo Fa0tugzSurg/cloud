@@ -10,11 +10,11 @@ spring:
         - veth.*
 server:
   port: 8400
-  ssl:
-    clientAuth: want
-    protocol: TLS
-    enabled: false
-eureka:
-  instance:
-    prefer-ip-address: true
-    leaseRenewalIntervalInSeconds: 10
+#  ssl:
+#    clientAuth: want
+#    protocol: TLS
+#    enabled: false
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    leaseRenewalIntervalInSeconds: 10

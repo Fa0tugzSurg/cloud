@@ -1,13 +1,13 @@
-server:
-  ssl:
-    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
-    key-store-password: pass_test
-    key-password: pass_test
-    enabled: false
-eureka:
-  client:
-    service-url:
-      defaultZone: https://eureka:pass_123@${eureka.backup.zone:localhost}:8100/eureka/
+#server:
+#  ssl:
+#    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
+#    key-store-password: pass_test
+#    key-password: pass_test
+#    enabled: false
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: https://eureka:pass_123@${eureka.backup.zone:localhost}:8100/eureka/
 logging:
   path: ./log
   level:
