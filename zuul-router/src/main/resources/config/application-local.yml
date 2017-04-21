@@ -8,7 +8,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka:pass_123@localhost:8100/eureka/
-      defaultZone: https://eureka:pass_123@localhost:8100/eureka/
 logging:
   path: ./log
   level:
