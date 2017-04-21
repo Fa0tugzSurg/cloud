@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -40,8 +41,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private DataSource dataSource;
 
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 //
 //    @Autowired
 //    @Qualifier("keyManager")
@@ -76,9 +77,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
 //        keyInitialCheck();
-//        String s = "SELECT property_value FROM t_sys_property_resource WHERE property_name=?";
-//        String key = jdbcTemplate.queryForObject(s, String.class, AUTH_SIGN_KEY_NAME);
-        String key = "O_vXUOds4wkkoFevWD3jwj0PamwhawbEjVXups37XMwnEwdg6X5s1HxTpLxr2esku-n94KVbk8BAI4Tr-BiumA";
+        String s = "SELECT property_value FROM t_sys_property_resource WHERE property_name=?";
+        String key = jdbcTemplate.queryForObject(s, String.class, AUTH_SIGN_KEY_NAME);
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey(key);
         return converter;
