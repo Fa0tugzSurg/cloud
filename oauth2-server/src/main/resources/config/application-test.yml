@@ -1,8 +1,8 @@
 #server:
 #  ssl:
 #    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
-#    key-store-password: pass_test
-#    key-password: pass_test
+#    key-store-password: store123
+#    key-password: pass123
 #    enabled: false
 #eureka:
 #  client:
@@ -21,7 +21,7 @@ spring:
     url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: qybx_dev
     password: dev@123456
-#    initialize: true   # Switch this on to create the schema on startup:
+    initialize: true   # Switch this on to create the schema on startup:
     continueOnError: true
     properties:
       max-active: 5
