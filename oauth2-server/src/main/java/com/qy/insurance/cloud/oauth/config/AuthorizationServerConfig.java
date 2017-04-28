@@ -1,6 +1,6 @@
-package com.qy.config;
+package com.qy.insurance.cloud.oauth.config;
 
-import com.qy.service.PropertyResourceService;
+import com.qy.insurance.cloud.oauth.service.PropertyResourceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

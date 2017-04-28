@@ -1,4 +1,4 @@
-package com.qy.service;
+package com.qy.insurance.cloud.oauth.service;
 
 /**
  * Created by leepon on 17/4/28.

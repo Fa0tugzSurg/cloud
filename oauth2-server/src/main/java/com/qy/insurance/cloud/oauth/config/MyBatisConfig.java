@@ -1,4 +1,4 @@
-package com.qy.config;
+package com.qy.insurance.cloud.oauth.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -20,7 +20,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableTransactionManagement
-@MapperScan("com.qy.mapper")
+@MapperScan("com.qy.insurance.cloud.oauth.mapper")
 public class MyBatisConfig implements TransactionManagementConfigurer {
 
     @Autowired
@@ -30,7 +30,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.qy.domain");
+        bean.setTypeAliasesPackage("com.qy.insurance.cloud.oauth.domain");
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));

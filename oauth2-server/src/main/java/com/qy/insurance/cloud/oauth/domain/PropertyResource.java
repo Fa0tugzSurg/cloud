@@ -1,4 +1,4 @@
-package com.qy.domain;
+package com.qy.insurance.cloud.oauth.domain;
 
 import lombok.Data;
 

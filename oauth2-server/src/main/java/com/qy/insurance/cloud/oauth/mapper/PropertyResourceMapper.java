@@ -1,4 +1,4 @@
-package com.qy.mapper;
+package com.qy.insurance.cloud.oauth.mapper;
 
 /**
  * Created by leepon on 17/4/28.

@@ -1,7 +1,7 @@
-package com.qy.service.impl;
+package com.qy.insurance.cloud.oauth.service.impl;
 
-import com.qy.mapper.PropertyResourceMapper;
-import com.qy.service.PropertyResourceService;
+import com.qy.insurance.cloud.oauth.mapper.PropertyResourceMapper;
+import com.qy.insurance.cloud.oauth.service.PropertyResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
