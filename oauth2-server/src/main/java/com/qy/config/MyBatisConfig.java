@@ -30,7 +30,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.qy.po");
+        bean.setTypeAliasesPackage("com.qy.domain");
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
