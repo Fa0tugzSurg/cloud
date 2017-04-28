@@ -42,11 +42,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>com.qy.insurance</groupId>
-                <artifactId>cloud-core</artifactId>
-                <version>1.0.1</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -59,6 +54,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.qy.insurance</groupId>
+            <artifactId>cloud-core</artifactId>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
 
