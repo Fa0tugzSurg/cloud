@@ -1,13 +1,3 @@
-#server:
-#  ssl:
-#    key-store: classpath:keystore/${spring.profiles.active}/keystore.jks
-#    key-store-password: store123
-#    key-password: pass123
-#    enabled: false
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: https://eureka:pass_123@${eureka.backup.zone:localhost}:8100/eureka/
 logging:
   path: ./log
   level:
@@ -15,25 +5,21 @@ logging:
     root: INFO
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: qybx_dev
+    password: dev@123456
     type: com.alibaba.druid.pool.DruidDataSource
-    schema: classpath:/mysql.sql
-    url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db?characterEncoding=utf-8
-    username: test12345
-    assword: sa123456
-    initialize: true   # Switch this on to create the schema on startup:
-    continueOnError: true
-    properties:
-      max-active: 5
-      min-idle: 1
-      initial-size: 1
-      test-on-borrow: true
-      test-on-return: true
-      test-while-idle: true
-      validation-query: select 1
-      #每10分钟收集空闲连接，单位毫秒#
-      time-between-eviction-runs-millis: 600000
-      #连接的最大空闲时间，单位毫秒，60分钟
-      min-evictable-idle-time-millis: 3600000
-      max-wait: 30000
-      jdbc-interceptors: ConnectionState;SlowQueryReport(threshold=0)
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
