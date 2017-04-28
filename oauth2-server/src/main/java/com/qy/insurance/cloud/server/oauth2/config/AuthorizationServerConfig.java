@@ -1,12 +1,11 @@
-package com.qy.insurance.cloud.oauth.config;
+package com.qy.insurance.cloud.server.oauth2.config;
 
-import com.qy.insurance.cloud.oauth.service.PropertyResourceService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -24,14 +23,14 @@ import javax.sql.DataSource;
 /**
  * @task:
  * @discrption:
- * @author: 苏小城
- * @date: 2017/04/28 10:25
+ * @author: Aere
+ * @date: 2016/11/2 18:25
  * @version: 1.0.0
  */
 @Configuration
+//@DependsOn("keyManager")
 @EnableAuthorizationServer
 @ConditionalOnMissingBean(DataSource.class)
-@Slf4j
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     public static final String AUTH_SIGN_KEY_NAME = "insurance.cloud.auth.key";
@@ -43,7 +42,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private DataSource dataSource;
 
     @Autowired
-    PropertyResourceService propertyResourceService;
+    private JdbcTemplate jdbcTemplate;
+//
+//    @Autowired
+//    @Qualifier("keyManager")
+//    private KeyManagementService keyManagementService;
 
 
     @Override
@@ -56,6 +59,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.jdbc(dataSource).passwordEncoder(new BCryptPasswordEncoder());
+//                .withClient("test_client").secret("abcd@1234").scopes("read").resourceIds("test_resouce")
+//                .authorizedGrantTypes("client_credentials").authorities("ROLE_TRUSTED_CLIENT")
+//                .accessTokenValiditySeconds(300);
     }
 
     @Override
@@ -70,13 +76,23 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
-        String key = propertyResourceService.queryPropertyValueBypropertyName(AUTH_SIGN_KEY_NAME);
-        log.info("===============私钥信息:{}===============:",key);
+//        keyInitialCheck();
+        String s = "SELECT property_value FROM t_sys_property_resource WHERE property_name=?";
+        String key = jdbcTemplate.queryForObject(s, String.class, AUTH_SIGN_KEY_NAME);
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey(key);
         return converter;
     }
 
+//    private void keyInitialCheck() {
+//        String sqlCount = "SELECT count(0) FROM t_sys_property_resource WHERE property_name=?";
+//        Integer cnt = jdbcTemplate.queryForObject(sqlCount, Integer.class, AUTH_SIGN_KEY_NAME);
+//        if (cnt == 0) {
+//            String key = keyManagementService.getTokenSignKey();
+//            String sqlInsert = "INSERT INTO t_sys_property_resource (property_name,property_value) VALUES (?,?)";
+//            jdbcTemplate.update(sqlInsert, AUTH_SIGN_KEY_NAME, key);
+//        }
+//    }
 
     @Bean
     @Primary
@@ -84,7 +100,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
         defaultTokenServices.setTokenStore(tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setAccessTokenValiditySeconds(28800);
+        defaultTokenServices.setAccessTokenValiditySeconds(120);
         return defaultTokenServices;
     }
 

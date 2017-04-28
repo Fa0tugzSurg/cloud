@@ -3,7 +3,18 @@ spring:
     name: @project.artifactId@
   profiles:
     active: dev
+  cloud:
+    inetutils:
+      ignored-interfaces:
+        - docker0
+        - veth.*
 server:
   port: 8400
-
-
+#  ssl:
+#    clientAuth: want
+#    protocol: TLS
+#    enabled: false
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    leaseRenewalIntervalInSeconds: 10
