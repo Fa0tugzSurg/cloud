@@ -21,7 +21,7 @@ zuul:
   add-proxy-headers: true
   routes:
     business:
-      stripPrefix: false
+      stripPrefix: true
       path: /test/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: demo-role-authority
