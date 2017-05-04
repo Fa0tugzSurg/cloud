@@ -7,7 +7,7 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: https://eureka:pass_123@localhost:8100/eureka/
+      defaultZone: http://eureka:pass_123@localhost:8100/eureka/
 logging:
   path: ./log
   level:
@@ -19,8 +19,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     schema: classpath:/mysql.sql
     url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/monitor_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: qybx_dev
-    password: dev@123456
+    username: qybx_dev_all
+    password: QO0JFZCQX412T4koTZAB
     initialize: true   # Switch this on to create the schema on startup:
     continueOnError: true
     max-active: 5
