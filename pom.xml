@@ -75,7 +75,7 @@
         <repository>
             <id>repo-qy</id>
             <name>local public nexus</name>
-            <url>http://139.224.1.62/nexus/content/groups/public/</url>
+            <url>http://106.14.51.254/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -88,7 +88,7 @@
         <pluginRepository>
             <id>repo-qy</id>
             <name>local public nexus</name>
-            <url>http://139.224.1.62/nexus/content/groups/public/</url>
+            <url>http://106.14.51.254/nexus/content/groups/public/</url>
             <releases>
                 <enabled>true</enabled>
             </releases>

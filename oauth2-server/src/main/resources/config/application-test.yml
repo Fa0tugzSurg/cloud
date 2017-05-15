@@ -26,13 +26,5 @@ spring:
     max-wait: 60000
     jdbc-interceptors: ConnectionState
 
-flyway:
-  locations: migration
-  baseline-on-migrate: true
-  validate-on-migrate: true
-  schemas: common_db
-  url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db
-  user: ${db.username}
-  password: ${db.password}
 
 
