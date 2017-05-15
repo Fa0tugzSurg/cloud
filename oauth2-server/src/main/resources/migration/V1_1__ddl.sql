@@ -27,4 +27,3 @@ INSERT INTO `oauth_client_details` VALUES ('hanyi', null, '$2a$10$Z9mdaAKWRRp4Bd
 
 INSERT INTO `oauth_role_authority` VALUES ('ROLE_TRUSTED_CLIENT', 'a'), ('ROLE_TRUSTED_CLIENT', 'c'), ('ROLE_TRUSTED_CLIENT', 'b'), ('role_b', 'a'), ('ROLE_TRUSTED_CLIENT', 'e');
 
-insert into `common_db`.`t_sys_property_resource` ( `property_value`, `property_name`) values ( 'O_vXUOds4wkkoFevWD3jwj0PamwhawbEjVXups37XMwnEwdg6X5s1HxTpLxr2esku-n94KVbk8BAI4Tr-BiumA', 'insurance.cloud.auth.key');
