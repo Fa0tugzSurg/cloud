@@ -1,6 +1,7 @@
 package com.qy.insurance.cloud.oauth.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.flywaydb.core.Flyway;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -39,6 +40,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+
     }
 
     @Bean
