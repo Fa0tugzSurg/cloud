@@ -30,6 +30,11 @@ zuul:
       path: /link/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: customer_link
+    zp:
+      stripPrefix: true
+      path: /lp/zp/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: insurance-lp
   filter:
     routes:
       jwt:
@@ -37,8 +42,7 @@ zuul:
         order: 1
         type: pre
         paths:
-          - /link/**
-          - /test/**
+          - /**
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT

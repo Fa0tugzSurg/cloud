@@ -7,7 +7,7 @@ logging:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db?characterEncoding=utf-8
+    url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db_testprod?characterEncoding=utf-8
     username: ${db.username}
     password: ${db.password}
     #数据库连接池配置
@@ -26,13 +26,13 @@ spring:
     max-wait: 60000
     jdbc-interceptors: ConnectionState
 
+
 flyway:
   locations: migration
   baseline-on-migrate: true
   validate-on-migrate: true
   schemas: common_db
-  url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db
+  url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db_testprod
   user: ${db.username}
   password: ${db.password}
-
 
