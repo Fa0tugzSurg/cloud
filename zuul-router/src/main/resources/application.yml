@@ -47,7 +47,8 @@ zuul:
         order: 1
         type: pre
         paths:
-          - /**
+          - /test/**
+          - /link/**
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT
