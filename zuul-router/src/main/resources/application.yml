@@ -32,9 +32,14 @@ zuul:
       serviceId: customer_link
     zp:
       stripPrefix: true
-      path: /lp/zp/**
+      path: /lp/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: insurance-lp
+    hb:
+      stripPrefix: true
+      path: /aus/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: insurance-hb
   filter:
     routes:
       jwt:
