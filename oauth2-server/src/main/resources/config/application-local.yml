@@ -24,11 +24,3 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
-flyway:
-  locations: migration
-  baseline-on-migrate: true
-  validate-on-migrate: true
-  schemas: common_db
-  url: jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/common_db
-  user: ${db.username}
-  password: ${db.password}
