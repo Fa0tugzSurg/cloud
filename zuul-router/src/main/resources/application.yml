@@ -17,8 +17,12 @@ eureka:
     non-secure-port-enabled: false
     secure-port-enabled: true
     secure-port: ${server.port}
+
 zuul:
   add-proxy-headers: true
+  host:
+      connect-timeout-millis: 10000
+      socket-timeout-millis: 60000
   routes:
     business:
       stripPrefix: true
@@ -52,3 +56,11 @@ zuul:
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
