@@ -56,6 +56,9 @@ zuul:
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 60000
 
 hystrix:
     command:
