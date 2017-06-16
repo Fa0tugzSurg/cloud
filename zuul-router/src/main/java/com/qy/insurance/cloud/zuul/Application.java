@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application {
 
 
-    @RequestMapping("/test")
+    @RequestMapping("/home")
     public String home(){
-        return "卡戴珊.流氓";
+        return "success";
     }
 
     public static void main(String[] args) {
