@@ -34,11 +34,21 @@ zuul:
       path: /link/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: customer_link
+    zl:
+      stripPrefix: true
+      path: /lp/zl/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: insurance-lp-zl
     zp:
       stripPrefix: true
-      path: /lp/**
+      path: /lp/zp/**
       sensitiveHeaders: Cookie,Set-Cookie
-      serviceId: insurance-lp
+      serviceId: insurance-lp-zp
+    ls:
+      stripPrefix: true
+      path: /lp/ls/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: insurance-lp-ls
     hb:
       stripPrefix: true
       path: /aus/**
