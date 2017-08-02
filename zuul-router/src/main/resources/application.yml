@@ -63,6 +63,7 @@ zuul:
         paths:
           - /test/**
           - /link/**
+          - /aus/**
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT
