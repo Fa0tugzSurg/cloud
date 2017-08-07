@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @Import({com.qy.insurance.cloud.core.security.ssl.DefaultSslConfig.class
         , com.qy.insurance.cloud.core.security.ssl.EurekaSslConfig.class})
+
 public class SSLConfig {
 
 }
