@@ -18,7 +18,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     schema: classpath:/mysql.sql
-    url: jdbc:mysql://rm-uf6jw8l2d762hoxq3.mysql.rds.aliyuncs.com:3306/common_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://insurancetest2.mysql.rds.aliyuncs.com:3306/common_db?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false
     username: ${db.username}
     password: ${db.password}
 #    initialize: true   # Switch this on to create the schema on startup:
