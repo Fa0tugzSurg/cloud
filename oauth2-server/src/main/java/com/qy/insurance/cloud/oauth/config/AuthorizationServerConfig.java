@@ -61,6 +61,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         oauthServer.passwordEncoder(new BCryptPasswordEncoder());
+        oauthServer.checkTokenAccess("permitAll()");
     }
 
     @Bean
