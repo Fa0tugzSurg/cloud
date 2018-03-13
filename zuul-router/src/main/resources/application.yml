@@ -54,6 +54,16 @@ zuul:
       path: /aus/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: insurance-hb
+    hb:
+      stripPrefix: true
+      path: /survey/aus/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: hb-survey
+    hb:
+      stripPrefix: true
+      path: /survey/claim/**
+      sensitiveHeaders: Cookie,Set-Cookie
+      serviceId: lp-survey
   filter:
     routes:
       jwt:
@@ -64,6 +74,7 @@ zuul:
           - /test/**
           - /link/**
           - /aus/**
+          - /survey/**
         roles:
           - role_test
           - ROLE_TRUSTED_CLIENT
