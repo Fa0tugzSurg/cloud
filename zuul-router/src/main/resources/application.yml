@@ -54,12 +54,12 @@ zuul:
       path: /aus/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: insurance-hb
-    hb:
+    hbsurvey:
       stripPrefix: true
       path: /survey/aus/**
       sensitiveHeaders: Cookie,Set-Cookie
       serviceId: hb-survey
-    hb:
+    lpsurvey:
       stripPrefix: true
       path: /survey/claim/**
       sensitiveHeaders: Cookie,Set-Cookie
